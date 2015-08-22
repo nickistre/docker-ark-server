@@ -1,0 +1,3 @@
+@ShutdownOnFailedCommand 1
+@NoPromptForPassword 1
+quit

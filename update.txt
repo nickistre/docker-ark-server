@@ -1,0 +1,6 @@
+@ShutdownOnFailedCommand 1
+@NoPromptForPassword 1
+login anonymous
+force_install_dir /home/daemon/steamcmd/ark
+app_update 376030 validate
+quit
