@@ -10,7 +10,7 @@ First, build the image while in the folder with Dockerfile with:
 Then setup and start the container with (Use your own information for angle-bracketed sections):
 
     docker run \
-        -p 27015:27015/udp -p 7777:7777/udp -p 32330:32330/tcp \
+        -p 27015:27015/udp -p 7777:7778/udp \
         -v <ark-server-dir>:/game-data \
         -e "ARKSERVER_NAME=<name>" \
         -e "ARKSERVER_PASSWORD=<game-password> \

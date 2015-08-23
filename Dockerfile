@@ -10,8 +10,8 @@ USER root
 RUN apt-get install -y sudo
 
 EXPOSE 27015/udp 
-EXPOSE 7777/udp 
-EXPOSE 32330
+EXPOSE 7778/udp 
+#EXPOSE 32330
 
 ADD update.txt /home/daemon/steamcmd/update.txt
 ADD run-ark-server.sh /home/daemon/steamcmd/run-ark-server.sh
