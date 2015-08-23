@@ -9,6 +9,8 @@ USER root
 
 RUN apt-get install -y sudo
 
+USER daemon
+
 ENV ARKSERVER_NAME=Zitch_test
 ENV ARKSERVER_PASSWORD=password
 ENV ARKSERVER_ADMINPASSWORD=adminpassword
@@ -23,6 +25,4 @@ RUN chmod +x ./run-ark-server.sh
 
 VOLUME /game-data
 
-CMD mkdir -p /game-data/ark && \
-    chown daemon:daemon /game-data/ark && \
-    sudo -u daemon ./run-ark-server.sh
+CMD ./run-ark-server.sh
