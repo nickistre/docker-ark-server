@@ -10,11 +10,13 @@ First, build the image while in the folder with Dockerfile with (use the tag nam
 Then setup and start the container with (Use your own information for angle-bracketed sections):
 
     docker run \
-        -p 22015:22015/udp -p 7777:7777/up 32330:32330/tcp \
+        -p 22015:22015/udp -p 7777:7777/udp 32330:32330/tcp \
         -v <ark-server-dir>:/game-data \
-        -e "ARKSERVER_NAME=<name>" -e "ARKSERVER_PASSWORD=<game-password> -e "ARKSERVER_ADMINPASSWORD=<admin-password>" \
+        -e "ARKSERVER_NAME=<name>" \
+        -e "ARKSERVER_PASSWORD=<game-password> \
+        -e "ARKSERVER_ADMINPASSWORD=<admin-password>" \
         -d \
+        --name <container-name>
         <tag-name>
 
-Add `--name <container-name>` to set your own name to the container.
 Start in interactive mode by replacing `-d` with `-ti`
