@@ -1,6 +1,0 @@
-@ShutdownOnFailedCommand 1
-@NoPromptForPassword 1
-login anonymous
-force_install_dir /game-data/ark
-app_update 376030
-quit
