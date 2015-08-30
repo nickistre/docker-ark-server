@@ -4,7 +4,7 @@ STEAMCMD_DIR=/game-data/steamcmd
 ARKSERVER_DIR=/game-data/ark
 
 pushd ${STEAMCMD_DIR}
-    ./steamcmd.sh +@ShutdownOnFailedCommand 1 +@NoPromptForPassword 1 +login anonymous +force_install_dir /game-data/ark +app_update 376030 validate +quit
+    ./steamcmd.sh +@ShutdownOnFailedCommand 1 +@NoPromptForPassword 1 +login anonymous +force_install_dir "${ARKSERVER_DIR}" +app_update 376030 validate +quit
         EXIT_STATUS=$?
 popd
 
