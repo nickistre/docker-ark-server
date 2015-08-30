@@ -9,6 +9,6 @@ popd
 
 pushd ${ARKSERVER_DIR}
 
-./ShooterGame/Binaries/Linux/ShooterGameServer TheIsland?listen?SessionName=${ARKSERVER_NAME}?ServerPassword=${ARKSERVER_PASSWORD}?ServerAdminPassword=${ARKSERVER_ADMINPASSWORD} -server -log
+./ShooterGame/Binaries/Linux/ShooterGameServer TheIsland?listen?RCONEnabled=True?RCONPort=32330 -server -log
 
 popd

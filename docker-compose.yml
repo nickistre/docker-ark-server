@@ -1,0 +1,9 @@
+game:
+    build: .
+    volumes:
+        - ../ark-server-data:/game-data
+    ports:
+        - "27015:27015/udp"
+        - "7778:7778/udp"
+        - "32330:32330"
+

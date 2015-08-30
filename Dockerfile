@@ -11,18 +11,16 @@ RUN apt-get install -y sudo
 
 EXPOSE 27015/udp 
 EXPOSE 7778/udp 
-#EXPOSE 32330
+EXPOSE 32330
 
 ADD update.txt /home/daemon/steamcmd/update.txt
-ADD run-ark-server.sh /home/daemon/steamcmd/run-ark-server.sh
-RUN chmod +x ./run-ark-server.sh
+ADD update.sh /usr/local/bin/update
+RUN chmod +x /usr/local/bin/update
 
 USER daemon
 
-ENV ARKSERVER_NAME=Zitch_test
-ENV ARKSERVER_PASSWORD=password
-ENV ARKSERVER_ADMINPASSWORD=adminpassword
-
 VOLUME /game-data
 
-CMD ./run-ark-server.sh
+WORKDIR /game-data/ark
+
+CMD ["/game-data/ark/ShooterGame/Binaries/Linux/ShooterGameServer","TheIsland?listen?RCONEnabled=True?RCONPort=32330","-server","-log"]
