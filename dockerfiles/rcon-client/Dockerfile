@@ -14,5 +14,7 @@ RUN mv rcon /usr/local/bin
 
 ENV ARKSERVER_ADMINPASSWORD "changeme"
 
-ENTRYPOINT ["rcon", "-P${ARKSERVER_ADMINPASSWORD}", "-agame", "-p32330"]
+# The following variables are normally not changed
+
+#ENTRYPOINT ["rcon", "-P${ARKSERVER_ADMINPASSWORD}", "-a${GAME_PORT_32330_TCP_ADDR}", "-p${GAME_PORT_32330_TCP_PORT}"]
 CMD listplayers

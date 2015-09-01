@@ -35,12 +35,20 @@ RUN chmod +rx /usr/local/bin/update
 ADD scripts/validate.sh /usr/local/bin/validate
 RUN chmod +rx /usr/local/bin/validate && ln -s /usr/local/bin/validate /usr/local/bin/install
 
-
+# Setup run script
+ADD scripts/run.sh /usr/local/bin/run
+RUN chmod +rx /usr/local/bin/run
 
 USER daemon
 
-WORKDIR /game-data/ark
+# The following variables should be changed.
 ENV ARKSERVER_ADMINPASSWORD "changeme"
 
+# The following variables can optionally be changed if needed.
+ENV REPEAT_MAX_COUNT 5
 
-CMD ["/game-data/ark/ShooterGame/Binaries/Linux/ShooterGameServer","TheIsland?listen?RCONEnabled=True?RCONPort=32330?ServerAdminPassword=${ARKSERVER_ADMINPASSWORD}","-server","-log"]
+# The following variables shouldn't be changed
+ENV STEAMCMD_DIR /game-data/steamcmd
+ENV ARKSERVER_DIR /game-data/ark
+
+CMD run
