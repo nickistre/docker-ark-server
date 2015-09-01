@@ -9,8 +9,6 @@ USER root
 
 VOLUME /game-data
 
-RUN apt-get install -y sudo
-
 RUN apt-get update && apt-get install --no-install-recommends -y \
     ca-certificates \
     lib32gcc1 \
@@ -24,17 +22,20 @@ EXPOSE 27015/udp
 EXPOSE 7778/udp 
 EXPOSE 32330
 
-# Setup install script (needed for steamcmd setup)
-ADD scripts/install.sh /usr/local/bin/install
-RUN chmod +x /usr/local/bin/install
+# Setup install and run scripts (needed for steamcmd setup)
+ADD scripts/install-steamcmd.sh /usr/local/bin/install-steamcmd
+ADD scripts/run-steamcmd.sh /usr/local/bin/steamcmd
+RUN chmod +rx /usr/local/bin/install-steamcmd /usr/local/bin/steamcmd
 
 # Setup update script
 ADD scripts/update.sh /usr/local/bin/update
-RUN chmod +x /usr/local/bin/update
+RUN chmod +rx /usr/local/bin/update
 
 # Setup update and install scripts
 ADD scripts/validate.sh /usr/local/bin/validate
-RUN chmod +x /usr/local/bin/validate
+RUN chmod +rx /usr/local/bin/validate && ln -s /usr/local/bin/validate /usr/local/bin/install
+
+
 
 USER daemon
 
