@@ -1,6 +1,0 @@
-defaults:
-    volumes:
-        - ../ark-server-data:/game-data
-    environment:
-        ARKSERVER_ADMINPASSWORD: abc123
-    

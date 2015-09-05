@@ -1,0 +1,20 @@
+game:
+    env_file: ../configs.env
+    build: ./game
+    volumes_from:
+        - volume
+    ports:
+        - "27015:27015/udp"
+        - "7778:7778/udp"
+        - "32330:32330"
+volume:
+    env_file: ../configs.env
+    build: ./game
+    volumes:
+        - ../data:/game-data
+    command: /bin/true
+rcon:
+    env_file: ../configs.env
+    build: ./rcon-client
+    links:
+        - game

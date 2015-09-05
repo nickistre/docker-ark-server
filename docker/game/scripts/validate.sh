@@ -2,7 +2,7 @@
 
 
 validate_func() {
-    steamcmd +@ShutdownOnFailedCommand 1 +@NoPromptForPassword 1 +login anonymous +force_install_dir "${ARKSERVER_DIR}" +app_update 376030 validate +quit
+    run-steamcmd +@ShutdownOnFailedCommand 1 +@NoPromptForPassword 1 +login anonymous +force_install_dir "${ARKSERVER_DIR}" +app_update 376030 validate +quit
     return $?
 }
 
@@ -12,13 +12,6 @@ do
     EXIT_STATUS=$?
     echo "Validate status failed with status: ${EXIT_STATUS}"
     echo "Validate count: ${COUNT} of ${REPEAT_MAX_COUNT}"
-    
-    case ${EXIT_STATUS} in
-        1)
-            echo "Break detected.  Exiting script"
-            exit ${EXIT_STATUS}
-            ;;
-    esac
 done
 
 

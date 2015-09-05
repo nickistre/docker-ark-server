@@ -1,4 +1,4 @@
 # KDE Directory files
 .directory
 data/
-config.yml
+configs.env

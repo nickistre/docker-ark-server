@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 update_func() {
-    steamcmd +@ShutdownOnFailedCommand 1 +@NoPromptForPassword 1 +login anonymous +force_install_dir "${ARKSERVER_DIR}" +app_update 376030 +quit
+    run-steamcmd +@ShutdownOnFailedCommand 1 +@NoPromptForPassword 1 +login anonymous +force_install_dir "${ARKSERVER_DIR}" +app_update 376030 +quit
     return $?
 }
 
@@ -11,13 +11,6 @@ do
     EXIT_STATUS=$?
     echo "Update status failed with status: ${EXIT_STATUS}"
     echo "Update count: ${COUNT} of ${REPEAT_MAX_COUNT}"
-        
-    case ${EXIT_STATUS} in
-        1)
-            echo "Break detected.  Exiting script"
-            exit ${EXIT_STATUS}
-            ;;
-    esac
 done
 
 EXIT_STATUS=$?

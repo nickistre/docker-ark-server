@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Do an update check before starting the server
-update
+check
 
 pushd ${ARKSERVER_DIR}
 ShooterGame/Binaries/Linux/ShooterGameServer TheIsland?listen?RCONEnabled=True?RCONPort=32330?ServerAdminPassword=${ARKSERVER_ADMINPASSWORD} -server -log
