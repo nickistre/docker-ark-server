@@ -39,5 +39,6 @@ ENV REPEAT_MAX_COUNT 5
 # The following variables shouldn't be changed
 ENV STEAMCMD_DIR /game-data/steamcmd
 ENV ARKSERVER_DIR /game-data/ark
+ENV LOG_DIR /game-data/logs
 
 CMD run

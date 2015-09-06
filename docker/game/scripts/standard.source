@@ -1,0 +1,18 @@
+# Source file for other scripts
+
+log() {
+    # Script to save output to log.  Use like "echo"
+    
+    # First, echo the info to standard output
+    echo "$@"
+    
+    # Second, save to a log file in log file
+    # Make sure log directory exists.
+    if [ ! -d "${LOG_DIR}" ]
+    then
+        mkdir -p ${LOG_DIR}
+    fi
+    
+    # Append to log
+    echo "$(date +'%Y-%m-%d %H:%M:%S %Z')- $0 - $@" >> ${LOG_DIR}/ark.log
+}

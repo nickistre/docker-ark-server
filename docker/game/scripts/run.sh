@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 
-# Do an update check before starting the server
+source /usr/local/bin/standard.source
+
+
+log "Check that server binary is available before starting it"
 check
 
 pushd ${ARKSERVER_DIR}
+log "Start server"
 ShooterGame/Binaries/Linux/ShooterGameServer TheIsland?listen?RCONEnabled=True?RCONPort=32330?ServerAdminPassword=${ARKSERVER_ADMINPASSWORD} -server -log
 
-echo "Update exit status: ${EXIT_STATUS}"
+EXIT_STATUS=$?
+log "Server exit status: ${EXIT_STATUS}"
 exit $EXIT_STATUS 
