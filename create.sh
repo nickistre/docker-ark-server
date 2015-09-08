@@ -22,7 +22,7 @@ DOCKER_ARK_RCON_IMAGE=ark-rcon
 
 # TODO: Check if containers already exist?
 # Create volume container
-docker create --name ${DOCKER_ARKVOLUME} -e "ARKSERVER_ADMINPASSWORD=${ARKSERVER_ADMINPASSWORD}" -v data:/game-data ${DOCKER_ARK_SERVER_IMAGE} /bin/true
+docker create --name ${DOCKER_ARKVOLUME} -e "ARKSERVER_ADMINPASSWORD=${ARKSERVER_ADMINPASSWORD}" -v ${DIR}/data:/game-data ${DOCKER_ARK_SERVER_IMAGE} /bin/true
 
 # Create game container
 docker create --name ${DOCKER_ARKSERVER} --volumes-from ${DOCKER_ARKVOLUME} -e  "ARKSERVER_ADMINPASSWORD=${ARKSERVER_ADMINPASSWORD}" ${DOCKER_ARK_SERVER_IMAGE}
