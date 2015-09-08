@@ -10,15 +10,13 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 pushd ${DIR}
 
-# Remove existing containers
+# Stop the docker container without warning users on the server first
 
 # TODO: Check source files exists
 source data/config/docker.source
 
 # TODO: Check if containers actually exist?
-# Remove containers
-docker rm ${DOCKER_ARKSERVER}
-docker rm ${DOCKER_ARKVOLUME}
+docker stop ${DOCKER_ARKSERVER}
 
 popd
 exit 0

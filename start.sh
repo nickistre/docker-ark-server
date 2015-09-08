@@ -10,15 +10,13 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 pushd ${DIR}
 
-# Remove existing containers
+# Start the docker container
 
 # TODO: Check source files exists
 source data/config/docker.source
 
 # TODO: Check if containers actually exist?
-# Remove containers
-docker rm ${DOCKER_ARKSERVER}
-docker rm ${DOCKER_ARKVOLUME}
+docker start ${DOCKER_ARKSERVER}
 
 popd
 exit 0
