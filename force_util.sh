@@ -38,7 +38,7 @@ then
     ./force_stop.sh
 fi
 
-docker run --rm -t --volumes-from ${DOCKER_ARKVOLUME} ${DOCKER_ARK_SERVER_IMAGE} "$@"
+docker run --rm -ti --volumes-from ${DOCKER_ARKVOLUME} ${DOCKER_ARK_SERVER_IMAGE} "$@"
 
 if [[ $ARKSERVER_RUNNING != 0 ]]
 then
