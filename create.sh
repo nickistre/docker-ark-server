@@ -15,12 +15,21 @@ pushd ${DIR}
 # TODO: Check source files exists
 source data/config/docker.source
 source configs.env
+source libs/settings
+source libs/functions
 
-# TODO: For now, these will be hard-set to ark-server and ark-rcon, but this probably should be changeable.
-DOCKER_ARK_SERVER_IMAGE=ark-server
-DOCKER_ARK_RCON_IMAGE=ark-rcon
+# Make sure images are built
+./build.sh
 
-# TODO: Check if containers already exist?
+# Check if containers already exist?
+ARKSERVER_EXISTS=$(check_created ${DOCKER_ARKSERVER})
+ARKSERVERVOLUME_EXISTS=$(check_created ${DOCKER_ARKVOLUME})
+
+if [[ $ARKSERVER_EXISTS != 0 || $ARKSERVERVOLUME_EXISTS != 0 ]]
+then
+    ./remove.sh
+fi
+
 # Create volume container
 docker create --name ${DOCKER_ARKVOLUME} -e "ARKSERVER_ADMINPASSWORD=${ARKSERVER_ADMINPASSWORD}" -v ${DIR}/data:/game-data ${DOCKER_ARK_SERVER_IMAGE} /bin/true
 

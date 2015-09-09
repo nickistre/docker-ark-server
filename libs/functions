@@ -1,0 +1,21 @@
+# Bash functions used by other scripts
+
+function check_created {
+    RESULT=$(docker ps -aq --filter "name=${1}")
+    if [ -n "$RESULT" ] 
+    then
+        echo 1
+    else 
+        echo 0
+    fi
+}
+
+function check_running {
+    RESULT=$(docker ps -aq --filter "name=${1}" --filter "status=running")
+    if [ -n "$RESULT" ]
+    then
+        echo 1
+    else
+        echo 0
+    fi
+}

@@ -1,0 +1,4 @@
+# Settings for scripts
+
+DOCKER_ARK_SERVER_IMAGE=ark-server
+DOCKER_ARK_RCON_IMAGE=ark-rcon

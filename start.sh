@@ -10,12 +10,21 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 pushd ${DIR}
 
+
 # Start the docker container
 
 # TODO: Check source files exists
 source data/config/docker.source
+source libs/functions
 
-# TODO: Check if containers actually exist?
+# Check if container exists
+ARKSERVER_EXISTS=$(check_created ${DOCKER_ARKSERVER})
+
+if [[ $ARKSERVER_EXISTS == 0 ]]
+then
+    ./create.sh
+fi
+
 docker start ${DOCKER_ARKSERVER}
 
 popd
