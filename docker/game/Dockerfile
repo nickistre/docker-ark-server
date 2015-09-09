@@ -6,7 +6,6 @@ MAINTAINER Nicholas Istre <nickistre@gmail.com>
 
 RUN apt-get update
 
-WORKDIR /home/daemon/steamcmd
 USER root
 
 VOLUME /game-data
@@ -28,6 +27,9 @@ EXPOSE 32330
 ADD scripts/* /usr/local/bin/
 RUN ln -s /usr/local/bin/validate.sh /usr/local/bin/install.sh && chmod +rx /usr/local/bin/* && for file in /usr/local/bin/*.sh; do ln -s ${file} /usr/local/bin/$(basename ${file} .sh); done
 
+# Setup and use daemon user
+RUN mkdir -p /home/daemon && chown -R daemon:daemon /home/daemon
+
 USER daemon
 
 # The following variables should be changed.
@@ -37,8 +39,15 @@ ENV ARKSERVER_ADMINPASSWORD "changeme"
 ENV REPEAT_MAX_COUNT 5
 
 # The following variables shouldn't be changed
-ENV STEAMCMD_DIR /game-data/steamcmd
+ENV STEAMCMD_DIR /home/daemon/steamcmd
 ENV ARKSERVER_DIR /game-data/ark
 ENV LOG_DIR /game-data/logs
 
+# Install steamcmd in image
+RUN mkdir -p ${STEAMCMD_DIR} && curl -s http://media.steampowered.com/installer/steamcmd_linux.tar.gz | tar -v -C ${STEAMCMD_DIR} -zx
+
+# Default work directory
+WORKDIR /home/daemon/steamcmd
+
+# Default command to do
 CMD run
