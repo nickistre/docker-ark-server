@@ -12,7 +12,8 @@ ADD http://www.dopefish.de/files/rcon.c rcon.c
 RUN gcc -o rcon rcon.c
 RUN mv rcon /usr/local/bin
 
-ENV ARKSERVER_ADMINPASSWORD "changeme"
+ADD scripts/run.sh /usr/local/bin/run
+RUN chmod +x /usr/local/bin/run
 
 # The following variables are normally not changed
 
