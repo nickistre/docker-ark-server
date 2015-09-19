@@ -17,7 +17,7 @@ source libs/settings
 source libs/functions
 
 # run rcon command in container
-docker run -ti --rm --link ${DOCKER_ARKSERVER}:arkserver ${DOCKER_ARK_RCON_IMAGE} "$@"
+docker run -ti --rm --link ${DOCKER_ARKSERVER}:arkserver ${DOCKER_ARK_RCON_IMAGE} run "$@"
 
 EXIT_VALUE=$?
 
